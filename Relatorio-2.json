@@ -1,0 +1,45 @@
+[
+    {
+      "professor": {
+        "nome": "Soned",
+        "email": "soned@inatel.br",
+        "departamento": "Algoritmos"
+      },
+      "assunto": "Algoritmos",
+      "alunos": [
+        {"nome": "Maria Souza", "email": "maria.souza@inatel.br", "matricula": "1"},
+        {"nome": "Pedro Santos", "email": "pedro.santos@inatel.br", "matricula": "2"},
+        {"nome": "Ana Oliveira", "email": "ana.oliveira@inatel.br", "matricula": "3"},
+        {"nome": "Lucas Pereira", "email": "lucas.pereira@inatel.br", "matricula": "4"}
+      ]
+    },
+    {
+      "professor": {
+        "nome": "Jonas",
+        "email": "jonas@inatel.br",
+        "departamento": "Banco de Dados"
+      },
+      "assunto": "Banco de Dados",
+      "alunos": [
+        {"nome": "Carlos Lima", "email": "carlos.lima@inatel.br", "matricula": "5"},
+        {"nome": "Mariana Fernandes", "email": "mariana.fernandes@inatel.br", "matricula": "6"},
+        {"nome": "Gustavo Almeida", "email": "gustavo.almeida@inatel.br", "matricula": "7"},
+        {"nome": "Fernanda Costa", "email": "fernanda.costa@inatel.br", "matricula": "8"}
+      ]
+    },
+    {
+      "professor": {
+        "nome": "Chris",
+        "email": "chris@inatel.br",
+        "departamento": "Programação Orientada a Objetos"
+      },
+      "assunto": "Programação Orientada a Objetos",
+      "alunos": [
+        {"nome": "Rafaela Lima", "email": "rafaela.lima@inatel.br", "matricula": "9"},
+        {"nome": "Diego Oliveira", "email": "diego.oliveira@inatel.br", "matricula": "10"},
+        {"nome": "Amanda Silva", "email": "amanda.silva@inatel.br", "matricula": "11"},
+        {"nome": "Bruno Fernandes", "email": "bruno.fernandes@inatel.br", "matricula": "12"}
+      ]
+    }
+  ]
+  
