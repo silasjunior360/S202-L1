@@ -6,7 +6,7 @@ db = Database(database="mercado", collection="compras")
 p =Product_analyzer(db)
 
 #1 Mostra total de vendas por dia
-ip=p.cliente_que_mais_gastou()
+p.cliente_que_mais_gastou()
 #2 mostra produto mais vendido em todas as compras.
 p.produto_mais_vendido()
 #3 Encontra cliente que mais gastou em uma única compra.
