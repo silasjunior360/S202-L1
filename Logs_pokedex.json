@@ -183,3 +183,35 @@
         ]
     }
 ]
+
+
+
+
+[{
+    "tipos_de_itens":{
+        "itens":{
+             "nome":"item1",
+             "preco":"10",
+             "peso":"5",
+             "volume":"5"},
+        "itens_magicos":{
+            "nome":"item2",
+            "preco":"20",
+            "peso":"10",
+            "volume":"10",
+            "possui_efeito":"Sim"},
+        "item_inventario":{
+            "nome":"item3",
+            "preco":"30",
+            "peso":"15",
+            "volume":"15",
+            "capacidade_peso":"600",
+            "capacidade_volume":300"},
+        "item_arma":{
+            "nome":"item4",
+            "preco":"100",
+            "peso":"50",
+            "volume":"50",
+            "classe":"classe1",
+            "dano":"1000"}}
+}]
