@@ -1,0 +1,62 @@
+# Wait 60 seconds before connecting using these details, or login to https://console.neo4j.io to validate the Aura Instance is available
+NEO4J_URI=neo4j+s://a57719eb.databases.neo4j.io
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=BQYOY8eviKvnAV42X2Hd6Txu8bcPbWYSdj6_7Mi3vSk
+AURA_INSTANCEID=a57719eb
+AURA_INSTANCENAME=Instance01
+
+1-criando os nós
+CREATE(:Mae:Pessoa{nome:'Eliza',idade:'46',sexo:'F'})
+CREATE(:Pai:Pessoa{nome:'Silas',idade:'51',sexo:'M'})
+CREATE(:Filho:Pessoa{nome:'Silas Jr',idade:'20',sexo:'M'})
+CREATE(:Filha:Pessoa{nome:'Dafne',idade:'13',sexo:'F'})
+CREATE(:Gato:Pet{nome:'Night',idade:'1',sexo:'M'})
+CREATE(:Cachorro:Pet{nome:'Laidy',idade:'9',sexo:'F'})
+CREATE(:Cachorro:Pet{nome:'Ashe',idade:'5',sexo:'F'})
+CREATE(:Avô:Pessoa{nome:'Jair',idade:'85',sexo:'M'})
+CREATE(:Avô:Pessoa{nome:'Jacinto',idade:'75',sexo:'M'})
+CREATE(:Avó:Pessoa{nome:'Ruth',idade:'70',sexo:'F'})
+
+2-a)criando os relacionamentos
+MATCH (pai:Pessoa {nome: 'Silas'}), (filha:Pessoa {nome: 'Dafne'})
+CREATE (pai)-[:PAI_DE]->(filha)
+MATCH (pai:Pessoa {nome: 'Silas'}), (filho:Pessoa {nome: 'Silas Jr'})
+CREATE (pai)-[:PAI_DE]->(filho)
+MATCH (mae:Pessoa {nome: 'Eliza'}), (filho:Pessoa {nome: 'Silas Jr'})
+CREATE (mae)-[:MAE_DE]->(filho)
+MATCH (mae:Pessoa {nome: 'Eliza'}), (filha:Pessoa {nome: 'Dafne'})
+CREATE (mae)-[:MAE_DE]->(filha)
+MATCH (pessoa:Pessoa {nome: 'Eliza'}), (pet:Pet {nome: 'Night'})
+CREATE (pessoa)-[:DONO_DE]->(pet)
+MATCH (pessoa:Pessoa {nome: 'Eliza'}), (pet:Pet {nome: 'Laidy'})
+CREATE (pessoa)-[:DONO_DE]->(pet)
+MATCH (pessoa:Pessoa {nome: 'Eliza'}), (pet:Pet {nome: 'Ashe'})
+CREATE (pessoa)-[:DONO_DE]->(pet)
+MATCH (avo:Pessoa {nome: 'Jair'}), (neta:Pessoa {nome: 'Dafne'})
+CREATE (avo)-[:AVO_DE]->(neta)
+MATCH (avo:Pessoa {nome: 'Jair'}), (neta:Pessoa {nome: 'Dafne'})
+CREATE (avo)-[:AVO_DE]->(neta)
+MATCH (avo:Pessoa {nome: 'Jacinto'}), (neto:Pessoa {nome: 'Silas Jr'})
+CREATE (avo)-[:AVO_DE]->(neto)
+MATCH (avo:Pessoa {nome: 'Jacinto'}), (neta:Pessoa {nome: 'Dafne'})
+CREATE (avo)-[:AVO_DE]->(neta)
+MATCH (avo:Pessoa {nome: 'Ruth'}), (neto:Pessoa {nome: 'Silas Jr'})
+CREATE (avo)-[:AVO_DE]->(neto)
+MATCH (avo:Pessoa {nome: 'Ruth'}), (neta:Pessoa {nome: 'Dafne'})
+CREATE (avo)-[:AVO_DE]->(neta)
+MATCH (jair:Pessoa {nome: 'Jair'}), (ruth:Pessoa {nome: 'Ruth'})
+CREATE (ruth)-[:ESPOSA_DE]->(jair),
+       (jair)-[:MARIDO_DE]->(ruth)
+MATCH (laidy:Pet {nome: 'Laidy'}), (ashe:Pet {nome: 'Ashe'})
+CREATE (laidy)-[:MAE_DE]->(ashe)
+MATCH (eliza:Pessoa {nome: 'Eliza'}), (silas:Pessoa {nome: 'Silas'})
+CREATE (eliza)-[:ESPOSA_DE]->(silas),
+       (silas)-[:MARIDO_DE]->(eliza)
+MATCH (silasjr:Pessoa {nome: 'Silas Jr'}), (jair:Pessoa {nome: 'Jair'})
+CREATE (jair)-[:AVO_DE]->(silasjr)
+
+2-b)criando relacionamentos com propriedades
+MATCH (pai:Pessoa {nome: 'Silas'}), (filho:Pessoa {nome: 'Silas Jr'})
+CREATE (pai)-[:PAI_DE {data_de_nascimento: date('2003-07-06')}]->(filho)
+MATCH (pai:Pessoa {nome: 'Silas'}), (filha:Pessoa {nome: 'Dafne'})
+CREATE (pai)-[:PAI_DE {data_de_nascimento: date('2010-09-19')}]->(filha)

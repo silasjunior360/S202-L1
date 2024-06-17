@@ -1,0 +1,56 @@
+RELATORIO 7 BANCO DE DADOS 2
+
+1-AGREGAÇAO
+MATCH (a:Airport)
+RETURN count(a) AS total_airports
+
+MATCH (a:Airport)
+RETURN sum(a.altitude) AS total_altitude
+
+MATCH (a:Airport)
+RETURN avg(a.runways) AS average_runways
+
+MATCH (a:Airport)
+WHERE a.altitude > 500
+RETURN a.descr AS airport_description, a.altitude AS altitude
+
+MATCH (a:Airport)
+RETURN a.city AS city, count(a) AS airport_count
+ORDER BY airport_count DESC
+
+2-FUNÇOES MATEMATICAS
+MATCH (a1:Airport), (a2:Airport)
+WHERE id(a1) < id(a2)
+RETURN a1.descr AS airport1, a2.descr AS airport2, abs(a1.altitude - a2.altitude) AS altitude_difference
+
+MATCH (a:Airport)
+RETURN a.descr AS airport, ceil(a.altitude) AS rounded_altitude
+
+MATCH (a:Airport)
+RETURN a.descr AS airport, floor(a.altitude) AS rounded_altitude
+
+MATCH (a:Airport)
+RETURN a.descr AS airport, rand() * a.runways AS random_runways
+
+MATCH (a1:Airport), (a2:Airport)
+WHERE id(a1) < id(a2)
+RETURN a1.descr AS airport1, a2.descr AS airport2, sign(a1.altitude - a2.altitude) AS altitude_sign
+
+3-FUNÇOES DE STRING
+MATCH (a:Airport)
+WHERE a.descr STARTS WITH "New York"
+RETURN a.descr AS airport_description
+
+MATCH (a:Airport)
+WHERE toLower(a.descr) CONTAINS "international"
+RETURN count(a) AS international_airport_count
+
+MATCH (a:Airport)
+RETURN a.descr AS airport_description, a.iata AS iata_code
+
+MATCH (a:Airport)
+RETURN upper(a.descr) AS uppercase_description
+
+MATCH (a:Airport)
+RETURN replace(a.descr, "International", "Int'l") AS modified_description
+

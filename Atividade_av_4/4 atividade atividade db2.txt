@@ -1,0 +1,44 @@
+4 atividade atividade db2
+CREATE TABLE estoque (
+    oid INT,
+    nome TEXT,
+    carro TEXT,
+    estante INT,
+    nivel INT,
+    quantidade INT,
+    PRIMARY KEY(oid,nome,carro)
+);
+
+INSERT INTO estoque (oid, nome, carro, estante, nivel, quantidade) 
+VALUES (
+    oid: '5',
+    nome: 'Pistao',
+    carro: 'Mustang',
+    estante: 4,
+    nivel: 1,
+    quantidade: 167
+);
+
+INSERT INTO estoque (oid, nome, carro, estante, nivel, quantidade) 
+VALUES (
+    oid: '4',
+    nome: 'Suspensao',
+    carro: 'Argo',
+    estante: 1,
+    nivel: 1,
+    quantidade: 3500
+);
+
+SELECT * FROM estoque WHERE nome = 'Pistao';
+
+SELECT AVG(quantidade) FROM estoque;
+
+SELECT COUNT(*) FROM estoque;
+
+SELECT MAX(quantidade) AS "maior quantidade", MIN(quantidade) AS "menor quantidade" FROM estoque;
+
+SELECT nome, carro, quantidade FROM estoque WHERE estante = 3 ALLOW FILTERING;
+
+SELECT AVG(quantidade) FROM estoque WHERE nivel = 1 ALLOW FILTERING;
+
+SELECT * FROM estoque WHERE estante < 3 AND nivel > 4 ALLOW FILTERING;
